@@ -1,0 +1,173 @@
+/*  
+Theme Name: Midi Onodera
+Author: Marty Spellerberg
+*/
+
+
+body { text-align: center; font-size: 13px; font-family: "museo-sans-1","museo-sans-2", sans-serif; font-weight: lighter; background-color:#666; color:#000; line-height: 1.4; text-align: left; margin: 0; padding: 0;}
+
+a {text-decoration: none; color: #666; font-weight: bold;}
+a:hover {text-decoration: underline;}
+
+h1 { overflow: hidden; display: inline;  text-align: left; font-size: 21px;  float: left; font-family: "chaparral-pro-subhead-1","chaparral-pro-subhead-2", serif; margin: 12px 0 4px 4px;}
+h1 a {font-weight: lighter; color: #ccc; background: url(images/midionodera-logo.png); background-position: center left; background-repeat: no-repeat; display: block; padding: 14px 0 6px 42px;}
+h1 a span {color: #fff; font-size: 30px; margin-right: 4px; }
+
+h2 { font-size:21px; font-weight: lighter; margin: 0; }
+
+h3 {font-size:18px; font-weight:lighter; margin-bottom: 0; font-family: "chaparral-pro-subhead-1","chaparral-pro-subhead-2", serif;}
+h3 a {font-weight: lighter;}
+
+h2+p, h3+p {margin-top: 0; color: #999;}
+
+a img { border: none;}
+
+img {max-width: 100%;}
+
+hr { border: none; border-top: 1px dotted rgb(204, 204, 204); height: 1px; margin: .5em 0 1.5em 0; clear: both; }
+
+#front {width:700px; padding-top: 200px; margin: auto;}
+
+.header {width: 100%; overflow: hidden; border-top: 8px solid #ff6660; }
+.header h2 {display: none;}
+
+.margin {margin: auto; overflow: hidden;  width: 900px; }
+
+
+.subscribe { overflow: hidden; float: right; text-align: right; font-size: 12px; font-family: "chaparral-pro-subhead-1", "chaparral-pro-subhead-2", serif;}
+.subscribe ul {margin: .75em 0; padding: 0; list-style: none;}
+.subscribe li {display: inline; margin: 0; padding: 0;}
+.subscribe a {color: #ff6660; margin-left: .5em;}
+.subscribe .heading {text-transform: uppercase; color: #fff; font-size: 10px; margin-left: 1em;}
+
+
+.search { width: 30%; float: right; clear: right; text-align: right;}
+#searchForm { float: right; margin: 0; padding: 3px 9px; background: #fff; -webkit-border-radius: 12px; -moz-border-radius: 12px; border-radius: 12px; }
+#searchForm fieldset {border: none; text-align: right; padding: 0; margin: 0; background: white; }
+#searchForm legend, #searchForm label {display: none;}
+#searchForm input { vertical-align:middle; }
+#submitsearch {margin: 0 3px;}
+#s { background: #fff; border:0 none; color:#666; font-family: "museo-sans-1","museo-sans-2", sans-serif; font-size:14px; height:18px; padding:2px; width: 97px;}
+input::-webkit-input-placeholder { color: #666; }
+input:-moz-placeholder { color: #666; }
+
+#pagewrapper { width: 100%; background: #fff; overflow: hidden; padding: 24px 0; border-bottom: 4px solid #ff6660; }
+
+
+#navigation ul {font-family: "chaparral-pro-subhead-1","chaparral-pro-subhead-2", serif; font-size: 14px; list-style: none; padding: 0; margin: 0; width: 170px; float: left;}
+#navigation ul li {padding: 8px 0; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px; }
+#navigation ul li a {font-weight: lighter; color: #666; padding: 4px 16px 4px 16px;}
+
+#navigation ul li.selected {background: #666;}
+#navigation ul li.selected a {color: #fff; font-weight: bold;}
+#navigation ul li.selected a span {color: #999; font-weight: lighter;}
+
+#page {width: 680px; margin: auto; float: right; border-left: 1px dotted #ccc; overflow: hidden; padding-left: 30px;}
+
+
+ul.subnav {list-style: none; margin: 1em 0; padding: 0; font-size: 13px;} 
+ul.subnav li {display: inline; padding: 0 1em 0 0;}
+ul.subnav li a {font-weight: lighter; color: #ff6660; white-space: nowrap; }
+ul.subnav li.selected a {font-weight: bold;}
+
+.back {margin-top: 0; color: #999;}
+.back a {color: #ff6660;}
+
+.category .item {clear: both; margin-bottom: 2em; width: 100%; overflow: hidden;}
+.category .item h3 {margin-top: 0;}
+.category .item .thumbnail {float: left; display: block;}
+.category .item .thumbnail img {width: 125px;}
+.category .item .excerpt {margin-left: 155px;}
+
+.grid h2 {margin-bottom: .6em;}
+.grid .item {margin-bottom: 2em; margin-right: 2em; float: left; width: 125px;}
+.grid .item h3 {margin-top: 0; font-size: 14px;}
+.grid .item .thumbnail {float: left; display: block;}
+.grid .item .thumbnail img {width: 125px; height: 84px;}
+
+.description {padding: 4px 16px; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px; background: #e0e0e0; margin: 1em 0 2em 0;}
+
+.pagenav {padding-top: 1em; clear: both;}
+.pagenav .next { margin-left: 2em; padding-left: 2em; border-left: 1px dotted #ccc;}
+
+.paging { width: 100%; overflow: hidden; padding: 1em 0; clear: both; list-style: none; font-weight: bold; text-align: left;}  
+.paging li { display: inline; margin: 0 .25em;}  
+.paging li.active { color: white; background: rgb(102, 102, 102); -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px; padding: 7px 14px; }
+.paging li a { background: #ddd; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px; padding: 7px 14px;}
+
+.seriesnav { clear: both; text-align: center; border-top: 1px dotted rgb(204, 204, 204); border-bottom: 1px dotted rgb(204, 204, 204); }
+
+.seriesnav p {margin: 1em;}
+.seriesnav .prev { float: left; margin: 1em 1em 1em 0;}
+.seriesnav .next { float: right; margin: 1em 0 1em 1em;}
+
+.media {padding: 1em 0;}
+.media ul {clear: both; list-style: none; width: 100%; overflow: hidden; margin: 0; padding: 10px 0;}
+.media li {display: inline; padding: 7px 10px; border: 1px solid #999; -moz-border-radius: 3px; -webkit-border-radius: 3px; margin: 1px;}
+
+#movdiv {display: none;}
+
+
+.share {padding: .8em 0 0 0; margin: 1em 0; clear: both; border-top: 1px dotted rgb(204, 204, 204); border-bottom: 1px dotted rgb(204, 204, 204); overflow: hidden;}
+
+div.atclear {display: none !important;}
+
+#disqus_thread {margin-top: 1em;}
+
+/* HTML5 player */
+
+.html5player {margin-bottom: 1em;}
+.html5player .poster {cursor: pointer;}
+.html5player .poster ul { padding: 1em 0; clear: both; list-style: none; width: 100%; overflow: hidden; margin: 0; padding: 10px 0;}
+.html5player .poster li {display: inline; padding: 7px 10px; border: 1px solid #999; -moz-border-radius: 3px; -webkit-border-radius: 3px; margin: 1px;}
+
+.html5player .downloadlinks { width: 100%; overflow: auto;}
+.html5player .downloadlinks ul {list-style: none; padding-left: 0; margin-left: 0; border-top: 1px dotted #fff; display: inline;}
+.html5player .downloadlinks ul li {display: inline; padding-right: 1em;}
+
+.clicktoview {padding: 7px 10px; border: 1px solid #999; -moz-border-radius: 3px; -webkit-border-radius: 3px; margin: 1px;}
+
+/* Form */
+
+.wpcf7-form-control-wrap textarea, .wpcf7-form-control-wrap input {border: 1px solid #ccc; background: #fff; padding: .5em; margin-top: 5px;}
+
+
+
+
+/* Footer */
+
+.footer {clear: both; margin: auto; padding: 2em 0; width: 900px; color: #ccc; text-align: left; }
+.footer a {font-weight: lighter; color: #fff;}
+
+.footer h3 {margin: 0; padding: 0; font-size: 13px; text-transform: uppercase;}
+.footer h3 a {color: #ccc;}
+
+.footer ul {list-style: none; padding: 0; margin-top: 15px;}
+.footer li {padding: 0;}
+.footer li span {display: block; padding-bottom: 4px;}
+
+.footerlinks {overflow: auto;  margin: 1em 0; padding: 1em 0; clear: both; border-top: 1px dotted #888; border-bottom: 1px dotted #888;}
+.footerlinks h3 {display: inline;}
+.footerlinks ul {display: inline; padding-left: 1em;}
+.footerlinks li {display: inline; padding-right: 1em;}
+
+.footercredits { padding: 0; margin: 0; width: 169px; float: left; }
+.footercredits p {margin-top: 0;} 
+
+.footernews { padding: 0 20px 0 30px; margin: 0 20px 1em 20px; width: 320px; float: left; border-left: 1px dotted #888; border-right: 1px dotted #888;}
+
+.footertweets {padding: 0; margin: 0; width: 308px; float: left; }
+
+
+ul.copyright { clear: both; color:#ccc; font-size: 11px; width: 900px; list-style: none; padding: 0; margin: 0;}
+ul.copyright li {display: inline; padding: 0 1.2em 0 0; float: none;}
+
+
+.twtr-widget {margin-top: 15px;}
+div.twtr-hd, div.twtr-ft {display: none !important;}
+div.twtr-tweet-wrap {padding: 0 0 1em 0 !important; }
+div.twtr-tweet {border-bottom: none !important;}
+
+/* K Films*/
+
+#swf_container {height: 500px;}
