@@ -39,7 +39,7 @@ jQuery(document).ready(function($) {
 	// Home Archives
 
 	$('.archive').append('<div class="pagenav"><a href="#latest" id="latest">« Newest video in this series</a></div>');
-	$('.latest').append('<div class="pagenav"><a href="#archive" id="archive">« Previous videos in this series</a></div>');
+//	$('.latest').append('<div class="pagenav"><a href="#archive" id="archive">« Previous videos in this series</a></div>');
 	$('.archive').hide();
 
 

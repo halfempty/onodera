@@ -13,9 +13,7 @@ get_header(); ?>
 		<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<h2><?php the_title(); ?></h2>
 
-			<?php get_template_part('addthis'); ?>
-
-			<?php //korsakowPlayer($post->ID) ?>
+			<?php get_template_part('parts/trailerflag'); ?>
 
 			<?php korsakowPlayer(); ?>
 

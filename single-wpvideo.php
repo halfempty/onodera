@@ -17,11 +17,7 @@ get_header(); ?>
 				<p>Posted <?php the_time('F j, Y') ?></p>
 			<?php } ?>
 
-			<?php get_template_part('addthis'); ?>
-			
- 			<?php //makeVideo("$post->ID"); ?>
-
- 			<?php //midiYoutube(); ?>
+			<?php get_template_part('parts/trailerflag'); ?>
 
 			<?php the_content(); ?>
 

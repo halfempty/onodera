@@ -69,9 +69,26 @@
 
 		<div id="navigation">
 			<ul>
-				<li <?php if ( is_home() || in_category_or_subcategory_of('series') || in_category('fps') && !in_category( 'news' ) ) { ?>class="selected"<?php } ?>	
-					><a href="/">Series</a></li>
-				<li <?php if ( !is_home() && in_category_or_subcategory_of('films') && !in_category( 'news' ) ) { ?>class="selected"<?php } ?>	
+				<li class="series"><span>Series</span></li>
+
+				<li <?php if ( is_home() || in_category('annual-report') ) { ?>class="selected"<?php } ?>
+				><a href="/">Annual Report</a></li>
+				<li <?php if ( in_category('kicking-around') ) { ?>class="selected"<?php } ?>
+				><a href="/category/kicking-around">Kicking Around</a></li>
+				<li <?php if ( in_category('the-classifieds') ) { ?>class="selected"<?php } ?>
+				><a href="/category/the-classifieds/">The Classifieds</a></li>
+				<li <?php if ( in_category('odd-socks') ) { ?>class="selected"<?php } ?>
+				><a href="/category/odd-socks/">Odd Socks</a></li>
+				<li <?php if ( in_category('fps') ) { ?>class="selected"<?php } ?>
+				><a href="/category/fps/">24fps</a></li>
+				<li <?php if ( in_category('bakers-dozen-2010') ) { ?>class="selected"<?php } ?>
+				><a href="/category/series/bakers-dozen-2010/">Baker’s Dozen</a></li>
+				<li <?php if ( in_category('movie-of-the-week') ) { ?>class="selected"<?php } ?>
+				><a href="/category/series/movie-of-the-week/">Movie of the Week</a></li>
+				<li <?php if ( in_category('a-movie-a-day') ) { ?>class="selected"<?php } ?>
+				><a href="/category/series/a-movie-a-day/">A Movie A Day</a></li>
+	
+				<li class="line <?php if ( !is_home() && in_category_or_subcategory_of('films') && !in_category( 'news' ) ) { ?>selected<?php } ?>"
 					><a href="/category/films/2012/">Portfolio</a></li>
 				<li <?php if ( !is_home() && !is_page() && in_category( 'news' ) ) { ?>class="selected"<?php } ?>	
 					><a href="/?category_name=news">News</a></li>
@@ -90,24 +107,7 @@
 		<div id="page">
 
 	<?php if ( !is_single() ) { ?>
-		<?php if ( is_home() || in_category_or_subcategory_of('series') || in_category('fps') ) { ?>
-		<ul class="subnav">
-			<li <?php if ( is_home() || in_category('kicking-around') ) { ?>class="selected"<?php } ?>
-			><a href="/">Kicking Around</a></li>
-			<li <?php if ( in_category('the-classifieds') ) { ?>class="selected"<?php } ?>
-			><a href="/category/the-classifieds/">The Classifieds</a></li>
-			<li <?php if ( in_category('odd-socks') ) { ?>class="selected"<?php } ?>
-			><a href="/category/odd-socks/">Odd Socks</a></li>
-			<li <?php if ( in_category('fps') ) { ?>class="selected"<?php } ?>
-			><a href="/category/fps/">24fps</a></li>
-			<li <?php if ( in_category('bakers-dozen-2010') ) { ?>class="selected"<?php } ?>
-			><a href="/category/series/bakers-dozen-2010/">Baker’s Dozen</a></li>
-			<li <?php if ( in_category('movie-of-the-week') ) { ?>class="selected"<?php } ?>
-			><a href="/category/series/movie-of-the-week/">Movie of the Week</a></li>
-			<li <?php if ( in_category('a-movie-a-day') ) { ?>class="selected"<?php } ?>
-			><a href="/category/series/a-movie-a-day/">A Movie A Day</a></li>
-		</ul>
-		<?php } else if ( in_category_or_subcategory_of('films') ) { ?>
+		<?php if ( in_category_or_subcategory_of('films') ) { ?>
 		<ul class="subnav">
 			<li <?php if ( in_category('2012') ) { ?>class="selected"<?php } ?>
 			><a href="/category/films/2012/">2012-2014</a></li>

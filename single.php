@@ -11,8 +11,8 @@
 				<p>Posted <?php the_time('F j, Y') ?></p>
 			<?php } ?>
 
-			<?php get_template_part('addthis'); ?>
-			
+			<?php get_template_part('parts/trailerflag'); ?>
+
 			<?php midiMetas(); ?>
 
 			<?php the_content(); ?>

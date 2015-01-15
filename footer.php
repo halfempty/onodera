@@ -8,7 +8,7 @@
 		<li>Website by <a href="http://www.martyspellerberg.com">Marty Spellerberg</a></li>
 		<li>From a design by <a href="http://www.rubypajares.com">Ruby Pajares</a></li>
 		<li>Hosted by <a href="http://www.mediatemple.net">MediaTemple</a></li>
-		<li>&copy; Copyright <?php echo date('Y')?> <a href="/contact/">Midi Onodera/Daruma Pictures Inc.</a></li>
+		<li>&copy; Copyright <?php echo date('Y')?></li>
 	</ul>
 
 	<?php } else { ?>

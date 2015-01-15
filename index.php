@@ -2,11 +2,9 @@
 
 <div class="category">
 
-	<?php get_template_part('addthis'); ?>
-
 	<div class="description">
 	<?php 
-		$mycategorynumber = get_category_by_slug('kicking-around'); 
+		$mycategorynumber = get_category_by_slug('annual-report'); 
 		echo category_description("$mycategorynumber->term_id");
 	?>
 	</div>
@@ -17,7 +15,7 @@
 	$first = true; 
 
 	$homeposts = get_posts(array( 
-		'category_name' => 'kicking-around', 
+		'category_name' => 'annual-report', 
 		'post_type' => 'post',
 		'numberposts'     => -1,
 		'post_status' => 'publish'
