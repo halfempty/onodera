@@ -33,7 +33,7 @@ function marty_get_attachment_url( $post_id = 0 ) {
 }
 
 
-function makeVideo($post_id = '$post->ID',$responsive = false) {
+function makeVideo($post_id,$responsive = false) {
 	
 	$attatchments =& get_children( array('post_parent' => $post_id, 'post_status' => 'inherit', 'post_type' => 'attachment' ) );
 
@@ -136,29 +136,6 @@ function renderVideo($params) {
 	$output .= '<img alt="" src="' . $params['image'] . '" width="' . $params['width'] . '" height="' . $params['height'] . '" title="No video playback capabilities, please download the video below" />';
 
 	$output .= '</object></video>';
-
-	$output .= '<div class="downloadlinks">';
-	$output .= '<p><span>Having trouble playing the video?</span> <strong>Try these direct links:</strong></p>';
-
-
-	if ($params['mp4']) {
-		$output .= '<ul>';
-		$output .= '<li>Most common format:</li>';
-		$output .= '<li><a href="' . $params['mp4'] . '">MP4</a></li>';
-		$output .= '</ul>';		
-	}
-
-
-	if ( $params['oog'] || $params['webm'] ) {
-		$output .= '<ul>';
-		$output .= '<li>Alternative formats:</li>';
-		if ($params['oog']) $output .= '<li><a href="' . $params['oog'] . '">OGG</a></li>';
-		if ($params['webm']) $output .= '<li><a href="' . $params['webm'] . '">WEBM</a></li>';
-		$output .= '</ul>';
-	}
-
-	$output .= '</div>';
-
 	
 	$output .= '</div></div> <!-- End HTML5 player-->';
 

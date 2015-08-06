@@ -1,5 +1,11 @@
 <?php
 
+// Includes
+
+require_once( 'functions/enqueue.php' );
+require_once( 'functions/usages.php' );
+require_once( 'functions/video.php' );
+
 //http://speakinginbytes.com/2012/11/responsive-images-in-wordpress/
 add_filter( 'post_thumbnail_html', 'remove_thumbnail_dimensions', 10 );
 add_filter( 'the_content', 'remove_thumbnail_dimensions', 10 );
@@ -8,59 +14,6 @@ function remove_thumbnail_dimensions( $html ) {
     $html = preg_replace( '/(width|height)=\"\d*\"\s/', "", $html );
     return $html;
 }
-
-
-
-
-function enqueue_theme_scripts() {
-
-    $themeStyle = get_bloginfo('stylesheet_directory') . '/style.css';
-    wp_register_style('themeStyle',$themeStyle);
-    wp_enqueue_style( 'themeStyle');
-
-	wp_enqueue_script( 'jquery');
-
-	if ( is_single('12-x-12-x-12') ) :
-
-	    $babbqjs = get_bloginfo('stylesheet_directory') . '/js/jquery.ba-bbq.js';
-		wp_register_script('babbqjs',$babbqjs);
-		wp_enqueue_script( 'babbqjs',array('jquery'));
-
-	endif;
-
-	// Media Element
-    $mediaelementjs = get_bloginfo('stylesheet_directory') . '/mediaelement/mediaelement-and-player.min.js';
-	wp_register_script('mediaelementjs',$mediaelementjs);
-	wp_enqueue_script( 'mediaelementjs',array('jquery'));
-
-    $mediaStyle = get_bloginfo('stylesheet_directory') . '/mediaelement/mediaelementplayer.css';
-    wp_register_style('mediaStyle',$mediaStyle);
-    wp_enqueue_style( 'mediaStyle');
-
-	// Colorbox
-    $colorbox = get_bloginfo('stylesheet_directory') . '/colorbox/jquery.colorbox-min.js';
-	wp_register_script('colorbox',$colorbox);
-	wp_enqueue_script( 'colorbox',array('jquery'));
-
-    $colorboxStyle = get_bloginfo('stylesheet_directory') . '/colorbox/colorbox.css';
-    wp_register_style('colorboxStyle',$colorboxStyle);
-    wp_enqueue_style( 'colorboxStyle');
-
-	// Theme JS
-    $onoderajs = get_bloginfo('stylesheet_directory') . '/js/onodera.js';
-	wp_register_script('onoderajs',$onoderajs);
-	wp_enqueue_script( 'onoderajs',array('jquery','colorbox','mediaelementjs'));
-
-
-	// Quicktime JS
-    $quicktimejs = get_bloginfo('stylesheet_directory') . '/js/AC_QuickTime.js';
-	wp_register_script('quicktimejs',$quicktimejs);
-	wp_enqueue_script( 'quicktimejs');
-
-
-}
-
-add_action('wp_enqueue_scripts', 'enqueue_theme_scripts');
 
 
 
@@ -177,7 +130,41 @@ function marty_metaimage($theKey) {
 } 
 // end
 
-// 
+
+function onoderaAfterVideoLinks() {
+	global $id, $post_meta_cache;
+
+	if ( $keys = get_post_custom_keys() ) :
+		foreach ( $keys as $key ) :
+			
+			$values = array_map('trim', get_post_custom_values($key));
+			$value = implode($values,', ');
+
+			if ( $key == "guide") { $midiGuide = $value; }
+			if ( $key == "image") { $midiImage = $value; }
+			if ( $key == "ios") { $midiIpod = $value; }
+			if ( $key == "mov") { $midiMov = $value; }
+			if ( $key == "pdf") { $midiPdf = $value; }
+			if ( $key == "thumbnail") { $midiThumbnail = $value; }
+			if ( $key == "youtube") { $midiYoutube = $value; }
+
+		endforeach;
+	endif;
+
+	$output = '';
+	if ($midiMov != null){ $output .= "<li class='showmov'><a href='$midiMov'>Quicktime</a> </li>"; }
+	if ($midiYoutube != null){ $output .= "<li><a href='$midiYoutube'>YouTube</a> </li>"; }
+	if ($midiIpod != null){ $output .= "<li class='showm4v'><a href='$midiIpod'>iPod</a> </li>"; }
+	if ($midiPdf != null){ $output .= "<li><a href='$midiPdf'>Transcript&nbsp;(PDF)</a> </li>"; }
+	if ($midiGuide != null){ $output .= "<li><a href='$midiGuide'>Study&nbsp;Guide&nbsp;(PDF)</a> </li>"; }
+
+	$output .= "<li><a href='http://www.addthis.com/bookmark.php' onclick='return addthis_sendto()'>Bookmark&nbsp;and&nbsp;Share</a></li>";
+
+	echo '<div class="media"><ul>' . $output . '</ul></div>';
+
+}
+
+
 function midiMetas() {
 	global $id, $post_meta_cache;
 	$midiTitle = "";
@@ -262,9 +249,7 @@ function marty_metacontrol($theKey) {
 }
 
 
-// Includes
 
-require_once( 'functions/video.php' );
 
 
 ?>

@@ -19,9 +19,11 @@ get_header(); ?>
 
 			<?php get_template_part('parts/trailerflag'); ?>
 
- 			<?php makeVideo("$post->ID"); ?>
+ 			<?php makeVideo($post->ID); ?>
 
  			<?php midiYoutube(); ?>
+
+			<?php onoderaAfterVideoLinks(); ?>
 
 			<?php the_content(); ?>
 

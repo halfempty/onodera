@@ -23,7 +23,7 @@
 
 	foreach( $homeposts as $post ) : 
 		setup_postdata( $post );
-		if ($first == true ) : ?>
+		if ( $first == true ) : ?>
 
 			<div class="item latest">	
 
@@ -33,16 +33,32 @@
 
 				<?php 
 
-				$post_template = get_post_meta( $post->ID, 'custom_post_template', true );
+				if ( have_rows('videos') ):
+					while ( have_rows('videos') ) : the_row();
 
-				if ( $post_template === 'single-video.php' ) : // HTML5 Player
-					makeVideo($post->ID);
-				else : // Probably default template or kfilm ?>
-					<a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_post_thumbnail('medium'); ?></a> 
-				<?php
+						$image = get_sub_field('image');
+						$videoimage = $image['url'];
+						$videowidth = $image['width'];
+						$videoheight = $image['height'];
+
+						$html_video_file = get_sub_field('html_video_file');
+						$videosrc = $html_video_file['url'];
+
+
+						$output = '<video ';
+						$output .= ' poster="' . $videoimage . '"';
+						$output .= ' src="' . $videosrc . '" type="video/mp4"';	
+						$output .= ' preload="auto" controls="controls" style="max-width: 100%; max-height: 100%;"></video>';
+						echo $output;
+
+						$description = get_sub_field('description');
+
+						if ( $description && $description != '' ) :
+							echo $description;
+						endif;
+
+					endwhile;
 				endif;
-
-				the_content();
 
 				?>
 			</div>
