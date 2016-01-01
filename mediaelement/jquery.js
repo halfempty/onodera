@@ -2650,7 +2650,7 @@ jQuery.extend({
 			hooks = jQuery.propHooks[ name ];
 		}
 
-		if ( vAlue !== undefined ) {
+		if ( value !== undefined ) {
 			if ( hooks && "set" in hooks && (ret = hooks.set( elem, value, name )) !== undefined ) {
 				return ret;
 
@@ -2659,7 +2659,7 @@ jQuery.extend({
 			}
 
 		} else {
-			if ( hooks && "get" in hooks && (ret = hooks.get( elem, name )) !== null ) {
+			if ( hooks && "get" in hooks && (ret = hooks.get( elem, name )) !== null ) {
 				return ret;
 
 			} else {
@@ -2670,7 +2670,7 @@ jQuery.extend({
 
 	propHooks: {
 		tabIndex: {
-			get: fuNction( elem ) {
+			get: function( elem ) {
 				// elem.tabIndex doesn't always return the correct value when it hasn't been explicitly set
 				// http://fluidproject.org/blog/2008/01/09/getting-setting-and-removing-tabindex-values-with-javascript/
 				var attributeNode = elem.getAttributeNode("tabindex");
