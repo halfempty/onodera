@@ -1,10 +1,10 @@
-addthis_pub             = 'midionodera'; 
-addthis_options         = 'email, print, twitter, myspace, facebook, twitter, google, stumble upon, digg, delicious, reddit, live, more';
-
 jQuery(document).ready(function($) {
 
-	$("div.html5player .poster").hide();
-	$('video').mediaelementplayer();
+	// Search
+	$('a.searchtoggle').on( "click", function( event ) {
+		event.preventDefault();
+		$('.searchbox').slideToggle('fast');
+	});
 
 
 	$("div.downloadlinks span").append(' <a class="clickforlinks">Click Here.</a>');
@@ -18,9 +18,7 @@ jQuery(document).ready(function($) {
 		$(this).parents('.downloadlinks').find('ul').show();
 	});
 
-
-
-	$("div.movdiv").hide();		
+	$("div.movdiv").hide();
 	$("a.movlink").click(function(event){
 	  event.preventDefault();
 		$(this).hide();
@@ -42,7 +40,6 @@ jQuery(document).ready(function($) {
 	$('.latest').append('<div class="pagenav"><a href="#archive" id="archive">« Previous videos in this series</a></div>');
 	$('.archive').hide();
 
-
 	$('#archive').click(function(event) {
 		event.preventDefault();	
 	  $('.latest').animate({height: 'toggle'}, {duration: "fast", complete: function() {
@@ -59,7 +56,5 @@ jQuery(document).ready(function($) {
 	    }
 	  });
 	});
-
-
 
 });

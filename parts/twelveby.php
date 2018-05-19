@@ -1,4 +1,3 @@
-
 <style>
 .twelveby {overflow: hidden; margin: 0 0 2em 0; padding: 0; list-style: none; background: url(http://midionodera.com/files/2012/11/twelveby-sprite.png); }
 .twelveby li {display: block; float: left; width: 170px; height: 170px; margin: 0; padding: 0; background: url(http://midionodera.com/files/2012/11/twelveby-sprite.png);}

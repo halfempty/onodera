@@ -37,8 +37,6 @@ get_header(); ?>
 		<p>In the series <?php the_category(", "); ?></p>
 	</div>
 
-	<?php comments_template(); ?>
-
 <?php else : ?>		
 	<p>Sorry, Not Found</p>
 <?php endif; ?>

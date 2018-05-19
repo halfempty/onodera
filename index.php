@@ -4,7 +4,7 @@
 
 	<div class="description">
 	<?php 
-		$mycategorynumber = get_category_by_slug('annual-report'); 
+		$mycategorynumber = get_category_by_slug('lonely-videos'); 
 		echo category_description("$mycategorynumber->term_id");
 	?>
 	</div>
@@ -15,7 +15,7 @@
 	$first = true; 
 
 	$homeposts = get_posts(array( 
-		'category_name' => 'annual-report', 
+		'category_name' => 'lonely-videos', 
 		'post_type' => 'post',
 		'numberposts'     => -1,
 		'post_status' => 'publish'
@@ -44,10 +44,11 @@
 						$html_video_file = get_sub_field('html_video_file');
 						$videosrc = $html_video_file['url'];
 
+						$filesrc = marty_get_file_url($videosrc);
 
 						$output = '<video ';
 						$output .= ' poster="' . $videoimage . '"';
-						$output .= ' src="' . $videosrc . '" type="video/mp4"';	
+						$output .= ' src="' . $filesrc . '" type="video/mp4"';	
 						$output .= ' preload="auto" controls="controls" style="max-width: 100%; max-height: 100%;"></video>';
 						echo $output;
 
@@ -77,12 +78,13 @@
 				<?php } ?>
 
 				<div class="excerpt">
+
 					<h3><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a></h3>
 
+					<p>Posted <?php the_time('F j, Y') ?></p>
 
-				<p>Posted <?php the_time('F j, Y') ?></p>
+					<?php the_excerpt() ?>
 
-				<?php the_excerpt() ?>
 				</div>
 
 			</div>

@@ -2,8 +2,6 @@
 
 		<div class="page">
 
-		<?php get_template_part('addthis'); ?>
-
 		<?php if (have_posts()) : ?>
 
 		<?php while (have_posts()) : the_post(); ?>

@@ -1,5 +1,15 @@
 <?php
 
+
+// Rewrite media link
+function marty_get_file_url( $file ) {
+
+	$mybase = 'http://0003.org/wp-content/blogs.dir/11';
+	$parsedURL = parse_url($file);
+
+	return $mybase . $parsedURL["path"];
+}
+
 // Rewrite media link
 function marty_get_attachment_url( $post_id = 0 ) {
 
@@ -40,8 +50,6 @@ function makeVideo($post_id,$responsive = false) {
 	$types = array(
 		'm4v' => 'video/m4v', 
 		'mp4' =>'video/mp4', 
-//		'ogg' =>'video/ogg',
-//		'webm' => 'video/webm'
 	);
 
 	$params = array();
@@ -61,85 +69,42 @@ function makeVideo($post_id,$responsive = false) {
 		if ( $themime == 'image/jpeg' ) {
 			$image_attributes = wp_get_attachment_image_src( $attachment_id, 'full' );
 			$params['image'] = $image_attributes[0]; // URL
-			$params['width'] = $image_attributes[1];
-			$params['height'] = $image_attributes[2];
 		}
 
 	}	
 
-	if ($responsive) {
-		renderResponsiveVideo($params);		
-	} else {
-		renderVideo($params);
-	}
-
+	renderVideo($params);
 
 }
 
 
+// Depricated
 function renderResponsiveVideo($params) {	
-	if ( $params['mp4'] ) {
 
-//		echo $params['mp4'];
+	renderVideo($params);
 
-
-		$output = '<video ';
-		$output .= ' width="' . $params['width'] . '" height="' . $params['height'] . '"';		
-//		$output .= ' width="100%" height="100%"';		
-
-		$output .= ' poster="' . $params['image'] . '"';
-		$output .= ' src="' . $params['mp4'] . '" type="video/mp4"';	
-		$output .= ' preload="auto" controls="controls" style="max-width: 100%; max-height: 100%;"></video>';
-		echo $output;	
-	} else {
-		echo "<p>Error: No MP4 video source.</p>";
-	}
 }	
 
 function renderVideo($params) {	
 
-	// M4V overrides MP4 (Do we even need this?)
 	if ( $params['m4v'] ) { 
 		$params['mp4'] = $params['m4v']; 
-	} 
+	}
 
 
-	// Render the player
-	$output = '<!-- HTML5 player -->';
-	$output .= '<div class="html5player">';
+	if ( $params['mp4'] ) {
 
-	
-		$output .= '<div class="poster"><img alt="" src="' . $params['image'] . '"';
-		$output .= ' width="' . $params['width'] . '" height="' . $params['height'] . '"';		
-		$output .= ' title="Click to play video" /><ul><li>Click for video</li></ul></div>';
- 
-	$output .= '<div class="player">';
-	$output .= '<video controls="controls"';
-	$output .= ' width="' . $params['width'] . '" height="' . $params['height'] . '"';			
-		$output .= ' poster="' . $params['image'];
-	
-	 $output .= '">';
+		$output = '<video ';
+		$output .= ' poster="' . $params['image'] . '"';
+		$output .= ' src="' . $params['mp4'] . '" type="video/mp4"';	
+		$output .= ' preload="auto" controls="controls" style="max-width: 100%; max-height: 100%;"></video>';
+		echo $output;
 
-	if ($params['mp4']) $output .= '<source src="' . $params['mp4'] . '" type="video/mp4" />';
-	if ($params['webm']) $output .= '<source src="' . $params['webm'] . '" type="video/webm" />';
-	if ($params['oog']) $output .= '<source src="' . $params['oog'] . '" type="video/ogg" />';
+	} else {
 
-	$output .= '<object type="application/x-shockwave-flash" data="/wp-content/js/player.swf" ';
-	$output .= ' width="' . $params['width'] . '" height="' . $params['height'] . '"';			
-		
-	$output .= '>';
-	$output .= '<param name="movie" value="/wp-content/js/player.swf" />';
-	$output .= '<param name="allowFullScreen" value="true" />';
-	$output .= '<param name="wmode" value="transparent" />';
-	$output .= '<param name="flashvars" value="autostart=false&amp;controlbar=over&amp;image=' . $params['image'] . '&amp;file=' . $params['mp4'] . '" />'; 
+		echo "<p>Error: No MP4 video source.</p>";
 
-	$output .= '<img alt="" src="' . $params['image'] . '" width="' . $params['width'] . '" height="' . $params['height'] . '" title="No video playback capabilities, please download the video below" />';
-
-	$output .= '</object></video>';
-	
-	$output .= '</div></div> <!-- End HTML5 player-->';
-
-	echo $output;
+	}
 
 }
 

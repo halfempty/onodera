@@ -32,15 +32,25 @@
 							$videoheight = $image['height'];
 
 							$html_video_file = get_sub_field('html_video_file');
-							$videosrc = $html_video_file['url'];
 
+							if ( is_array($html_video_file) && array_key_exists('url', $html_video_file) ) :
 
-							$output = '<video ';
-							$output .= ' poster="' . $videoimage . '"';
-							$output .= ' src="' . $videosrc . '" type="video/mp4"';	
-							$output .= ' preload="auto" controls="controls" style="max-width: 100%; max-height: 100%;"></video>';
-							echo $output;	
+								$videosrc = $html_video_file['url'];
 
+								$filesrc = marty_get_file_url($videosrc);
+
+								$output = '<video ';
+								$output .= ' poster="' . $videoimage . '"';
+								$output .= ' src="' . $filesrc . '" type="video/mp4"';	
+								$output .= ' preload="auto" controls="controls" style="max-width: 100%; max-height: 100%;"></video>';
+
+							else:
+
+								$output = '<img src="' . $videoimage . '" alt="" />';
+
+							endif;
+
+							echo $output;
 
 							// Meta 
 
@@ -132,8 +142,6 @@
 		<?php next_post_link('<span class="next">%link</span>', 'Newer &raquo;', TRUE) ?>
 		<p>In the series <?php the_category(", "); ?></p>
 	</div>
-
-	<?php comments_template(); ?>
 
 <?php endif; ?>
 

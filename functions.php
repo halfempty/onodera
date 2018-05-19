@@ -3,8 +3,18 @@
 // Includes
 
 require_once( 'functions/enqueue.php' );
+require_once( 'functions/menus.php' );
 require_once( 'functions/usages.php' );
 require_once( 'functions/video.php' );
+
+
+
+function theme_slug_setup() {
+   add_theme_support( 'title-tag' );
+}
+add_action( 'after_setup_theme', 'theme_slug_setup' );
+
+
 
 //http://speakinginbytes.com/2012/11/responsive-images-in-wordpress/
 add_filter( 'post_thumbnail_html', 'remove_thumbnail_dimensions', 10 );
@@ -190,38 +200,24 @@ function midiMetas() {
 
 	if ($midiImage != null || $midiGuide != null || $midiIpod != null || $midiMov != null || $midiPdf != null ){
 
-		if ($midiMov != null && $midiImage != null){
+		if ($midiImage != null) :
+			echo '<img src="' . $midiImage . '" alt="$midiTitle" />';
+		endif;
 
-				$output .= "<a href='$midiMov' title='View QuickTime' class='movlink'><img src='$midiImage' alt='$midiTitle' /></a>
-				
-					<div class='movdiv'><script type=\"text/javascript\">
-					  QT_WriteOBJECT_XHTML(
-						'$midiMov', '700', '450', '',
-					    'controller', 'true'); 
-					</script></div>				
-				
-				";
-
-		} else if ($midiImage != null){
-		
-				$output .= "<img src='$midiImage' alt='$midiTitle' />";
-		
-		}
-
+		if ($midiMov != null && $midiImage != null) :
+				$output .= "<p><a href='$midiMov'>Download QuickTime clip</a></p>";
+		endif;
 
 		if ($midiGuide != null || $midiIpod != null || $midiMov != null || $midiPdf != null || $midiYoutube != null ){
 
 			$output .= "<ul>";
 
-			if ($midiMov != null){ $output .= "<li class='showmov'><a href='$midiMov'>Quicktime</a> </li>"; }
 			if ($midiYoutube != null){ $output .= "<li><a href='$midiYoutube'>YouTube</a> </li>"; }
 			if ($midiIpod != null){ $output .= "<li class='showm4v'><a href='$midiIpod'>iPod</a> </li>"; }
 			if ($midiPdf != null){ $output .= "<li><a href='$midiPdf'>Transcript&nbsp;(PDF)</a> </li>"; }
 			if ($midiGuide != null){ $output .= "<li><a href='$midiGuide'>Study&nbsp;Guide&nbsp;(PDF)</a> </li>"; }
 		
-			$output .= "			
-				<li><a href='http://www.addthis.com/bookmark.php' onclick='return addthis_sendto()'>Bookmark&nbsp;and&nbsp;Share</a></li>
-			</ul>";		
+			$output .= "</ul>";		
 		}
 	}
 
@@ -247,9 +243,3 @@ function marty_metacontrol($theKey) {
 		}
 	}
 }
-
-
-
-
-
-?>

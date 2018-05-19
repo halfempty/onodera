@@ -6,8 +6,6 @@
 				<h2><?php echo single_cat_title(); ?></h2>
 			<?php } ?>
 
-			<?php get_template_part('addthis'); ?>
-
 			<?php if ( !is_paged() ) { ?>
 				<?php marty_wrapped_category_description(); ?>
 			<?php } ?>

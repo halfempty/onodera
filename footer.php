@@ -2,44 +2,15 @@
 
 <div class="footer">
 
-<?php if ( is_home() ) { ?>
+	<div class="footerlinks">
 
-	<ul class="copyright">
-		<li>Website by <a href="http://www.martyspellerberg.com">Marty Spellerberg</a></li>
-		<li>From a design by <a href="http://www.rubypajares.com">Ruby Pajares</a></li>
-		<li>Hosted by <a href="http://www.mediatemple.net">MediaTemple</a></li>
-		<li>&copy; Copyright <?php echo date('Y')?></li>
-	</ul>
+		<h3>Follow</h3>
 
-	<?php } else { ?>
-
-	<div class="footercredits">
-	
-		<p>Website by<br /><a href="http://www.martyspellerberg.com">Marty Spellerberg</a></p>
-		<p>From a design by <br /><a href="http://www.rubypajares.com">Ruby Pajares</a></p>
-		<p>Hosted by <br /><a href="http://www.mediatemple.net">MediaTemple</a></p>
-		<p>&copy; <?php echo date('Y')?></p>
-
-	</div>
-
-
-	<div class="footernews">
-
-		<h3><a href="/category/news/">Recent News</a></h3>
-	 <ul>
-	 <?php
-	 global $post;
-	 $myposts = get_posts('numberposts=5&category_name=news');
-	 foreach($myposts as $post) :
-	   setup_postdata($post);
-	 ?>
-	    <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a> <span><?php the_date('Y-m-d'); ?></span></li>
-	 <?php endforeach; ?>
-	 </ul>
-
-	</div>
-
-	<div class="footertweets">
+		<ul>
+		<li><a href="https://www.instagram.com/Midi_Onodera/">Instagram</a></li> 
+		<li><a href="https://vimeo.com/midi">Vimeo</a></li> 
+		<li><a href="https://www.youtube.com/channel/UCxxnjzhjwY4Cjp5_7v7zWyg">Youtube</a></li>
+		</ul>
 
 		<h3>Links</h3>
 
@@ -47,15 +18,21 @@
 			<?php wp_list_bookmarks('title_li=&categorize=0'); ?>
 		</ul>
 
-	
 	</div>
 
+	<div class="footercredits">
 
-
-<?php } ?>
-
+		<p> &copy; <?php echo date('Y')?> Daruma Pictures Inc.</p>
 	
+	</div>
 </div>
+
+</div>
+
+<?php get_template_part('parts/mobilenav'); ?>
+
+<div class="responsivecue"></div>
+
 <?php wp_footer(); ?>
 
 </body>
