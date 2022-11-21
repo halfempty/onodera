@@ -1,99 +1,48 @@
 <?php get_header(); ?>
 
-<div class="category">
-
-	<div class="description">
-	<?php 
-		$mycategorynumber = get_category_by_slug('lonely-videos'); 
-		echo category_description("$mycategorynumber->term_id");
-	?>
+	<div class="pagetop">
+		<h1><?php echo single_cat_title(); ?></h1>
 	</div>
 
+	<?php if (have_posts()) : ?>
 
-	<?php
-
-	$first = true; 
-
-	$homeposts = get_posts(array( 
-		'category_name' => 'lonely-videos', 
-		'post_type' => 'post',
-		'numberposts'     => -1,
-		'post_status' => 'publish'
-	));
-
-	foreach( $homeposts as $post ) : 
-		setup_postdata( $post );
-		if ( $first == true ) : ?>
-
-			<div class="item latest">	
-
-				<h2><?php the_title(); ?></h2>
-				<p>Published <?php the_time('F j, Y') ?></p>
+		<nav>
+			<ul>
+				<li class="current-menu-item"><a href="/category/news/">Updates</a></li>
+				<li><a href="/articles/">Press</a></li>
+			</ul>
+		</nav>
 
 
-				<?php 
-
-				if ( have_rows('videos') ):
-					while ( have_rows('videos') ) : the_row();
-
-						$image = get_sub_field('image');
-						$videoimage = $image['url'];
-						$videowidth = $image['width'];
-						$videoheight = $image['height'];
-
-						$html_video_file = get_sub_field('html_video_file');
-						$videosrc = $html_video_file['url'];
-
-						$filesrc = marty_get_file_url($videosrc);
-
-						$output = '<video ';
-						$output .= ' poster="' . $videoimage . '"';
-						$output .= ' src="' . $filesrc . '" type="video/mp4"';	
-						$output .= ' preload="auto" controls="controls" style="max-width: 100%; max-height: 100%;"></video>';
-						echo $output;
-
-						$description = get_sub_field('description');
-
-						if ( $description && $description != '' ) :
-							echo $description;
-						endif;
-
-					endwhile;
-				endif;
-
-				?>
-			</div>
-		
-			<div class="archive">
-			
-			<?php $first = false; ?>
-		
-		<?php else: ?>	
+		<div class="blog">
+	
+		<?php while (have_posts()) : the_post(); ?>
 
 			<div class="item">
-				<?php if ( has_post_thumbnail() ) { ?>
-					<a class="thumbnail" href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_post_thumbnail(); ?></a> 
-				<?php } else { ?>
-					<a class="thumbnail" href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php marty_metaimage("thumbnail"); ?></a> 				
-				<?php } ?>
 
-				<div class="excerpt">
+				<h2><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a></h2>
 
-					<h3><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_title(); ?></a></h3>
-
-					<p>Posted <?php the_time('F j, Y') ?></p>
-
-					<?php the_excerpt() ?>
-
+				<div class="excerpttext">
+				<?php the_excerpt() ?>
 				</div>
 
 			</div>
 
-		<?php endif; ?>
+			<?php if ( has_post_thumbnail() ) : ?>
+				<div class="thumbnail">
+					<div class="ratio"></div>
+					<a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title(); ?>"><?php the_post_thumbnail('large'); ?></a>
+				</div>
+			<?php endif; ?>
 
-	<?php endforeach; ?>
+		<?php endwhile; ?>
 
-	</div> <!-- / Archive -->
-</div>
+		</div>
+
+		<div class="pagination">
+			<?php echo paginate_links(); ?>
+		</div>
+
+	<?php endif; ?>
 
 <?php get_footer(); ?>

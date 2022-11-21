@@ -1,37 +1,16 @@
-</div></div></div>
-
-<div class="footer">
-
-	<div class="footerlinks">
-
-		<h3>Follow</h3>
-
-		<ul>
-		<li><a href="https://www.instagram.com/Midi_Onodera/">Instagram</a></li> 
-		<li><a href="https://vimeo.com/midi">Vimeo</a></li> 
-		<li><a href="https://www.youtube.com/channel/UCxxnjzhjwY4Cjp5_7v7zWyg">Youtube</a></li>
-		</ul>
-
-		<h3>Links</h3>
-
-		<ul>
-			<?php wp_list_bookmarks('title_li=&categorize=0'); ?>
-		</ul>
-
-	</div>
-
-	<div class="footercredits">
-
-		<p> &copy; <?php echo date('Y')?> Daruma Pictures Inc.</p>
-	
-	</div>
 </div>
 
-</div>
+<footer>
 
-<?php get_template_part('parts/mobilenav'); ?>
+	<ul>
+		<li><a target="_blank" href="https://www.instagram.com/Midi_Onodera/">Instagram</a></li> 
+		<li><a target="_blank" href="https://vimeo.com/midi">Vimeo</a></li> 
+		<li><a target="_blank" href="https://www.youtube.com/channel/UCxxnjzhjwY4Cjp5_7v7zWyg">Youtube</a></li>
+	</ul>
 
-<div class="responsivecue"></div>
+	<p> &copy; <?php echo date('Y')?> Daruma Pictures Inc.</p>
+
+</footer>
 
 <?php wp_footer(); ?>
 

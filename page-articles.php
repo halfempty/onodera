@@ -5,8 +5,16 @@
 		<?php while (have_posts()) : the_post(); ?>
 
 			<div class="pagetop">
-				<h1><?php the_title(); ?></h1>
+				<h1>News</h1>
 			</div>
+
+			<nav>
+				<ul>
+					<li><a href="/category/news/">Updates</a></li>
+					<li class="current-menu-item"><a href="/articles/">Press</a></li>
+				</ul>
+			</nav>
+
 
 			<div class="textbox">
 				<?php the_content() ?>

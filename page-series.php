@@ -1,47 +1,75 @@
 <?php 
 
 /*
-Template Name: Series
+Template Name: Film and Video
 */
 
 get_header(); ?>
 
-<?php if( have_rows('series') ): ?>
+<div class="pagetop">
 
-	<div class="seriesindex">
+<h1>Film and Video</h1>
 
-	<?php while ( have_rows('series') ) : the_row(); ?>
+</div>
 
-		<?php
+<nav>
+	<?php wp_nav_menu( array( 'theme_location' => 'films' ) ); ?>
+</nav>
 
-			$term = get_sub_field('project_object');
-			$project_url = get_term_link( $term );
-			$project_title = get_sub_field('project_title');
-			$project_image = get_sub_field('thumbnail');
+<?php 
 
-		?>
+	if ( is_page('film-and-video') ) :
 
-		<div class="project">
-			<div class="ratio"></div>
-			<div class="inner">
-				<div class="padding">
+		$args = array( 
+			'post_type' => 'midi_films',
+			'nopaging' => true,
+			'tax_query' => array(
+				array(
+					'taxonomy' => 'midi_film_categories',
+					'field'    => 'slug',
+					'terms'    => 'film-and-video-series',
+				),
+			)
+		);
 
-					<?php if ( $project_image ) : ?>
-						<a href="<?php echo $project_url; ?>"><img src="<?php echo $project_image; ?>" alt="<?php echo $project_title; ?>" /></a>
-					<?php endif; ?>
+	else :
 
-					<h2><a href="<?php echo $project_url; ?>"><?php echo $project_title; ?></a></h2>
+		if ( is_page('film') ) :
+			$type = 'film';
+		elseif ( is_page('online-video-series') ) :
+			$type = 'online';
+		elseif ( is_page('interactive-video') ) :
+			$type = 'interactive';
+		else : 
+			$type = 'video';
+		endif;
 
-				</div>
+		$args = array( 
+			'meta_key' => 'video_type',
+			'meta_value' => $type,
+			'post_type' => 'midi_films',
+			'nopaging' => true,
+			'tax_query' => array(
+				array(
+					'taxonomy' => 'midi_film_categories',
+					'field'    => 'slug',
+					'terms'    => 'film-and-video-series',
+				),
+			),
+		);
 
-			</div>
+	endif;
 
-		</div>
+	$myposts = get_posts( $args );
 
-	<?php endwhile; ?>
+?>
 
-	</div>
+<div class="grid">
+	<?php foreach ( $myposts as $post ) : setup_postdata( $post ); ?>
+		<?php echo get_template_part('parts/item-grid'); ?>
+	<?php endforeach; ?>
+</div>
 
-<?php endif; ?>
+<?php wp_reset_postdata();?>
 
 <?php get_footer(); ?>

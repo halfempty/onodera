@@ -8,8 +8,7 @@
 	<link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> RSS Feed" href="<?php bloginfo('rss2_url'); ?>" />
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 	
-	<script type="text/javascript" src="http://use.typekit.com/pyr4wce.js"></script>
-	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+	<link rel="stylesheet" href="https://use.typekit.net/pyr4wce.css">
 
 	<!-- Fav Icons: Browser, iOS, Windows 8 -->
 	<link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri() ?>/images/favicons/favicon.ico">
@@ -24,87 +23,33 @@
 
 </head>
 
-<body>
+<?php $colors = randomColor(); ?>
 
-<div class="header">
+<body class="<?php echo $colors[0]; ?>">
 
-	<div class="searchbox"><div class="searchboxpadding">
-		<?php echo get_search_form(); ?>
-	</div></div>
+<header> 
 
-	<div class="margin">
+	<div class="adminspacer"></div>
 
-	<h1><a href="/"><span><?php bloginfo('name'); ?></span><br /><?php bloginfo('description'); ?></a></h1>
+	<div class="title"><a href="<?php echo get_site_url(); ?>">Midi Onodera</a></div>
 
-	<div id="navigation">
-		<ul>
+	<button class="menuicon"><?php echo get_template_part('images/menu.svg'); ?></button>
 
-			<li <?php if ( is_home() ) { ?>class="selected"<?php } ?>
-			><a href="/">Latest</a></li>
+	<nav>
+		<div class="navwrap">
 
-			<li <?php if ( is_page('series') ) { ?>class="selected"<?php } ?>
-			><a href="/series/">Series</a></li>
+			<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
 
-			<li <?php if ( in_category_or_subcategory_of('films') ) { ?>class="selected"<?php } ?>
-			><a href="/category/films/2015-2018/">Portfolio</a></li>
+			<form role="search" method="get" id="searchform" class="searchform" action="http://midionodera.com/">
+				<div class="inner">
+					<input class="searchbox" type="text" placeholder="Search" value="" name="s" id="s">
+				</div>
+			</form>
 
-			<li <?php if ( !is_front_page() && in_category( 'news' ) || is_page('distributors') || is_page('collections') || in_category('purchase') || is_page('articles') || is_page('about') ) { ?> class="selected" <?php } ?> 
-			><a href="/about/">Info</a></li>
-
-			<li><a href="#" class="searchtoggle"><span class="label">Search</span></a></li>
-
-		</ul> 
 		</div>
+	</nav>
 
-	</div>
+</header>
 
-</div>
-
-<div class="scrollingcontent">
-
-<div class="layoutspacer"></div>
-
-<div id="pagewrapper">
-
-	<?php if ( is_page_template( 'page-doublehome.php' ) ) : ?>
-	<div class="homemargin">
-	<?php else : ?>
-	<div class="margin">
-	<?php endif; ?>
-
-		<div id="page">
-
-	<?php if ( !is_front_page() && !is_single() && !is_search() ) { ?>
-		<?php if ( in_category_or_subcategory_of('films') ) { ?>
-		<ul class="subnav">
-			<li <?php if ( in_category('2015-2018') ) { ?>class="selected"<?php } ?>
-			><a href="/category/films/2015-2018/">2015-2018</a></li>
-			<li <?php if ( in_category('2012') ) { ?>class="selected"<?php } ?>
-			><a href="/category/films/2012/">2012-2014</a></li>
-			<li <?php if ( in_category('2006-2010') ) { ?>class="selected"<?php } ?>
-			><a href="/category/films/2006-2010/">2006-2011</a></li>
-			<li <?php if ( in_category('1995-2005') ) { ?>class="selected"<?php } ?>
-			><a href="/category/films/1995-2005/">1995-2005</a></li>
-			<li <?php if ( in_category('1988-1992') ) { ?>class="selected"<?php } ?>
-			><a href="/category/films/1988-1992/">1988-1992</a></li>
-			<li <?php if ( in_category('1979-1985') ) { ?>class="selected"<?php } ?>
-			><a href="/category/films/1979-1985/">1979-1985</a></li>
-		</ul>
-
-		<?php } else if ( in_category( 'news' ) || is_page('distributors') || is_page('collections') || in_category('purchase') || is_page('articles') || is_page('about') ) { ?>
-		<ul class="subnav">
-			<li <?php if ( is_page('about') ) { ?>class="selected"<?php } ?>	
-					><span><a href="/about/">About</a></span></li>
-			<li <?php if ( !is_home() && !is_page() && in_category( 'news' ) ) { ?>class="selected"<?php } ?>
-				><span><a href="/?category_name=news">News</a></span></li>
-			<li <?php if ( is_page('collections') ) { ?>class="selected"<?php } ?>
-				><a href="/?page_id=66">Collections</a></li>
-			<li <?php if ( in_category('purchase') ) { ?>class="selected"<?php } ?>
-				><a href="/?category_name=purchase">Purchase</a></li>
-			<li <?php if ( is_page('distributors') ) { ?>class="selected"<?php } ?>
-				><a href="/?page_id=67">Rentals</a></li>
-			<li <?php if ( is_page('articles') ) { ?>class="selected"<?php } ?>	
-				><span><a href="/?page_id=517">Articles</a></span></li>
-		</ul>
-		<?php } ?>
-	<?php } ?>
+<div class="page">
+	<div class="headerspacer"></div>
