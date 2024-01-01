@@ -7,7 +7,7 @@
 
 	<link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> RSS Feed" href="<?php bloginfo('rss2_url'); ?>" />
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
-	
+
 	<link rel="stylesheet" href="https://use.typekit.net/pyr4wce.css">
 
 	<!-- Fav Icons: Browser, iOS, Windows 8 -->
@@ -15,8 +15,8 @@
 	<link rel="apple-touch-icon" sizes="114x114" href="<?php echo get_stylesheet_directory_uri() ?>/images/favicons/favicon-114.png" />
 	<link rel="apple-touch-icon" sizes="72x72" href="<?php echo get_stylesheet_directory_uri() ?>/images/favicons/favicon-72.png" />
 	<link rel="apple-touch-icon" href="<?php echo get_stylesheet_directory_uri() ?>/images/favicons/favicon-57.png" />
-	<meta name="application-name" content="<?php bloginfo( 'name' ); ?>"/> 
-	<meta name="msapplication-TileColor" content="#000000"/> 
+	<meta name="application-name" content="<?php bloginfo( 'name' ); ?>"/>
+	<meta name="msapplication-TileColor" content="#000000"/>
 	<meta name="msapplication-TileImage" content="<?php echo get_stylesheet_directory_uri() ?>/images/favicons/favicon-144.png"/>
 
 	<?php wp_head(); ?>
@@ -27,7 +27,7 @@
 
 <body class="<?php echo $colors[0]; ?>">
 
-<header> 
+<header>
 
 	<div class="adminspacer"></div>
 
@@ -40,7 +40,7 @@
 
 			<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
 
-			<form role="search" method="get" id="searchform" class="searchform" action="http://midionodera.com/">
+			<form role="search" method="get" id="searchform" class="searchform" action="<?php echo site_url(); ?>">
 				<div class="inner">
 					<input class="searchbox" type="text" placeholder="Search" value="" name="s" id="s">
 				</div>
